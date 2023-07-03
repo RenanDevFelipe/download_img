@@ -73,7 +73,7 @@
     const dowloadBnt = document.getElementById("button-baixar");
 
     dowloadBnt.addEventListener("click", async () => {
-
+        event.preventDefault();
         try {
             const response = await fetch(urlInput.value);
             const file = await response.blob();
