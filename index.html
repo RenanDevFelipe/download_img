@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>DEV TEC | DO ZERO PARA VOCÊ</title>
+</head>
+
+<body>
+    <header>
+        <nav class="nav-bar">
+            <div class="nav-logo-tipo">
+                <h1>DEV TEC</h1>
+            </div>
+
+            <div class="nav-rede-social">
+                <ul>
+                    <li>
+                        <a
+                            href="https://api.whatsapp.com/send?phone=5581982523877&text=Ol%C3%A1%20vim%20pelo%20site%20de%20download"><i
+                                class="fa-brands fa-whatsapp"></i></a>
+                    </li>
+
+                    <li>
+                        <a href="https://www.linkedin.com/in/renan-silva-690578232"><i
+                                class="fa-brands fa-linkedin-in"></i></a>
+                    </li>
+
+                    <li>
+                        <a href="https://github.com/RenanDevFelipe"><i class="fa-brands fa-github"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <form class="paramt-one-form">
+                <div class="box">
+                    <label for="">Insira o Link da Imagem</label>
+                    <input type="text" id="input-link" placeholder="https://exemple.com.br/exemple">
+                </div>
+
+                <button type="submit" id="button-baixar">Baixar Arquivo</button>
+            </form>
+        </section>
+    </main>
+</body>
+<footer>
+    <div>
+        <a href="https://api.whatsapp.com/send?phone=5581982523877&text=Ol%C3%A1%20vim%20pelo%20site%20de%20download"><i
+                class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://www.linkedin.com/in/renan-silva-690578232"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://github.com/RenanDevFelipe"><i class="fa-brands fa-github"></i></a>
+
+        <p style="letter-spacing: 1px;">Copyright &copy; 2023 RENAN FELIPE DEV</p>
+    </div>
+</footer>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 2000
+    });
+</script>
+
+<script>
+    const urlInput = document.getElementById("input-link");
+    const dowloadBnt = document.getElementById("button-baixar");
+
+    dowloadBnt.addEventListener("click", async () => {
+
+        try {
+            const response = await fetch(urlInput.value);
+            const file = await response.blob();
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(file);
+            link.download = new Date().getTime();
+            link.click();
+        } catch (error) {
+            alert("Erro no download")
+        }
+    })
+</script>
+
+</html>
